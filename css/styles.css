@@ -11,6 +11,7 @@
   --modal-bg-color: #fcfcfc;
 
   --white-color: #fff;
+  --black-color: #000;
   --footer-social-icons-bg: rgba(255, 255, 255, 0.1);
   --time-transition: 250ms;
   --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -547,11 +548,19 @@ img {
   border-radius: 50%;
   border: 1px solid rgba(0, 0, 0, 0.1);
   background-color: var(--cornflower-color);
+  color: var(--black-color);
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: color var(--time-transition) var(--timing-function),
+    background-color var(--time-transition) var(--timing-function);
 }
+.close-modal-btn:hover {
+  background-color: var(--ocean-color);
+  color: var(--white-color);
+}
+
 .close-modal-icon {
-  fill: #000;
+  fill: currentColor;
 }
