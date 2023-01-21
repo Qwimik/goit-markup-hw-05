@@ -9,6 +9,8 @@
   --cloud-color: #f4f4fd;
   --white-color: #fff;
   --footer-social-icons-bg: rgba(255, 255, 255, 0.1);
+  --time-transition: 250ms;
+  --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ============= Generals ============= */
@@ -84,10 +86,35 @@ img {
   font-weight: 500;
   line-height: 1.5;
   letter-spacing: 0.02em;
+  position: relative;
+}
+.nav-link::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background-color: var(--ocean-color);
+  position: absolute;
+  left: 0;
+  bottom: -27px;
+  transform: scaleX(0);
+  transition: transform var(--time-transition) var(--timing-function);
+}
+.nav-link:hover::after,
+.nav-link:focus::after {
+  transform: scaleX(1);
 }
 .nav-link:hover,
 .nav-link:focus {
   color: var(--ocean-color);
+}
+.active-link {
+  color: var(--ocean-color);
+}
+.active-link::after {
+  transform: scaleX(1);
+  content: '';
 }
 
 /* ===== Contacts ===== */
@@ -341,7 +368,7 @@ img {
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 2px 1px rgba(0, 0, 0, 0.08),
     0px 2px 2px rgba(0, 0, 0, 0.12);
 }
-.active {
+.active-btn {
   border: 1px solid var(--ocean-color);
   color: var(--white-color);
   background-color: var(--ocean-color);
@@ -397,6 +424,29 @@ img {
   letter-spacing: 0.02em;
 }
 
+.project-card-thumb {
+  position: relative;
+  overflow: hidden;
+}
+.project-card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--iris-color);
+  color: var(--cloud-color);
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  padding: 40px 32px 0;
+  transform: translateY(101%);
+  transition: transform var(--time-transition) var(--timing-function);
+}
+.project-card-link:hover .project-card-overlay,
+.project-card-link:focus .project-card-overlay {
+  transform: translateY(0);
+}
+
 /* ============= Footer ============= */
 .page-footer {
   background-color: var(--navy-blue-color);
@@ -434,4 +484,28 @@ img {
 .footer-social .social-link:hover,
 .footer-social .social-link:focus {
   background-color: var(--green-color);
+}
+
+/* ============= Modal ============= */
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.backdrop.is-hidden {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 300px;
+  min-height: 300px;
+  background-color: #fff;
 }
