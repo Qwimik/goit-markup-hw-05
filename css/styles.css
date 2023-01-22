@@ -160,7 +160,6 @@ img {
     url('../images/hero-bg.jpg');
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain;
 }
 .hero-title {
   color: var(--white-color);
@@ -333,7 +332,7 @@ img {
   border-radius: 4px;
   padding: 16px 32px;
   transition: color var(--time-transition) var(--timing-function),
-    border var(--time-transition) var(--timing-function);
+    border-color var(--time-transition) var(--timing-function);
 }
 .customer-icon {
   fill: currentColor;
@@ -341,7 +340,7 @@ img {
 .customer-link:hover,
 .customer-link:focus {
   color: var(--ocean-color);
-  border: 1px solid var(--ocean-color);
+  border-color: var(--ocean-color);
 }
 
 /* ============= portfolio.html ============= */
@@ -371,11 +370,12 @@ img {
   cursor: pointer;
   transition: color var(--time-transition) var(--timing-function),
     background-color var(--time-transition) var(--timing-function),
-    border var(--time-transition) var(--timing-function);
+    border-color var(--time-transition) var(--timing-function),
+    box-shadow var(--time-transition) var(--timing-function);
 }
 .filter-btn:hover,
 .filter-btn:focus {
-  border: 1px solid var(--ocean-color);
+  border-color: var(--ocean-color);
   color: var(--white-color);
   background-color: var(--ocean-color);
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 2px 1px rgba(0, 0, 0, 0.08),
@@ -513,11 +513,13 @@ img {
   transition: opacity var(--time-transition) var(--timing-function);
 }
 .backdrop.is-hidden {
-  visibility: hidden;
   opacity: 0;
   pointer-events: none;
 }
-
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(0.8);
+  transition: transform var(--time-transition) var(--timing-function);
+}
 .modal {
   position: absolute;
   top: 50%;
@@ -528,15 +530,8 @@ img {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
-
   transform: translate(-50%, -50%) scale(1);
   transition: transform var(--time-transition) var(--timing-function);
-}
-.backdrop.is-hidden .modal {
-  transform: translate(-50%, -50%) scale(0.8);
-}
-.modal-content {
-  position: relative;
 }
 .close-modal-btn {
   position: absolute;
