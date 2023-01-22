@@ -513,12 +513,12 @@ img {
   transition: opacity var(--time-transition) var(--timing-function);
 }
 .backdrop.is-hidden {
+  visibility: hidden;
   opacity: 0;
   pointer-events: none;
 }
 .backdrop.is-hidden .modal {
   transform: translate(-50%, -50%) scale(0.8);
-  transition: transform var(--time-transition) var(--timing-function);
 }
 .modal {
   position: absolute;
@@ -531,7 +531,9 @@ img {
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
   transform: translate(-50%, -50%) scale(1);
-  transition: transform var(--time-transition) var(--timing-function);
+  transition: transform var(--time-transition) var(--timing-function),
+    visibility var(--time-transition) var(--timing-function),
+    opacity var(--time-transition) var(--timing-function);
 }
 .close-modal-btn {
   position: absolute;
